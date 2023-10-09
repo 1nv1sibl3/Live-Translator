@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Toggle Example</title>
+    <!-- Include Google Translate API script -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+<div>
+    <!-- Button to trigger translation to Hindi -->
+    <button onclick="translateToHindi()">Translate to Hindi</button>
+</div>
+
+<div class="content-section">
+    <!-- Content to be translated -->
+    <h1>Mumbai</h1>
+    <p>The capital city of Maharashtra, formerly known as Bombay, is derived from the Marathi words "Mumbā" and "Āai," meaning "mother" and "goddess," respectively. The name refers to the local Hindu goddess Mumbadevi.</p>
+
+    <h1>Pune</h1>
+    <p>The second-largest city is believed to have derived its name from the Sanskrit word "Punya," meaning "virtue." It is often referred to as the "Oxford of the East" due to its educational institutions.</p>
+
+    <h1>Nagpur</h1>
+    <p>The largest city in central India is named after the Nag River that flows through the city. The name "Nagpur" is believed to be derived from the Sanskrit words "Nag" (snake) and "Pur" (city).</p>
+</div>
+
+<script>
+    // Initialize the Google Translate service
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+    }
+
+    // Translate the entire page content to Hindi
+    function translateToHindi() {
+        google.translate.TranslateElement.Translate('en', 'hi', function (translation) {
+            // Replace the entire content with the translated text
+            document.body.innerHTML = translation.value;
+        });
+    }
+</script>
+</body>
+</html>
