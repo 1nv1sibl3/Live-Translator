@@ -3,44 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>Language Toggle Example</title>
+    <!-- Include Google Translate API script -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
 <div>
-    <button onclick="toggleLanguage('en')">English</button>
-    <button onclick="toggleLanguage('hi')">हिन्दी</button>
+    <!-- Button to trigger translation to Hindi -->
+    <button onclick="translateToHindi()">Translate to Hindi</button>
 </div>
 
 <div class="content-section">
-    <h1 class="animate__animated animate__fadeIn">Mumbai</h1>
-    <div class="content-wrap">
-        <div class="content-text animate__animated animate__fadeIn">
-            <p>The capital city of Maharashtra, formerly known as Bombay, is derived from the Marathi words "Mumbā" and "Āai," meaning "mother" and "goddess," respectively. The name refers to the local Hindu goddess Mumbadevi.</p>
-        </div>
-    </div>
+    <!-- Content to be translated -->
+    <h1>Mumbai</h1>
+    <p>The capital city of Maharashtra, formerly known as Bombay, is derived from the Marathi words "Mumbā" and "Āai," meaning "mother" and "goddess," respectively. The name refers to the local Hindu goddess Mumbadevi.</p>
+
+    <h1>Pune</h1>
+    <p>The second-largest city is believed to have derived its name from the Sanskrit word "Punya," meaning "virtue." It is often referred to as the "Oxford of the East" due to its educational institutions.</p>
+
+    <h1>Nagpur</h1>
+    <p>The largest city in central India is named after the Nag River that flows through the city. The name "Nagpur" is believed to be derived from the Sanskrit words "Nag" (snake) and "Pur" (city).</p>
 </div>
 
 <script>
-    function toggleLanguage(language) {
-        const contentElements = document.querySelectorAll('.content-text p');
-        
-        contentElements.forEach(element => {
-            if (language === 'en') {
-                // English content
-                if (element.classList.contains('en')) {
-                    element.style.display = 'block';
-                } else {
-                    element.style.display = 'none';
-                }
-            } else if (language === 'hi') {
-                // Hindi content
-                if (element.classList.contains('hi')) {
-                    element.style.display = 'block';
-                } else {
-                    element.style.display = 'none';
-                }
-            }
+    // Initialize the Google Translate service
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+    }
+
+    // Translate the entire page content to Hindi
+    function translateToHindi() {
+        google.translate.TranslateElement.Translate('en', 'hi', function (translation) {
+            // Replace the entire content with the translated text
+            document.body.innerHTML = translation.value;
         });
     }
 </script>
