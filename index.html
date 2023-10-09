@@ -4,17 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Toggle Example</title>
-    <!-- Include Google Translate API script -->
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
-<div>
-    <!-- Button to trigger translation to Hindi -->
-    <button onclick="translateToHindi()">Translate to Hindi</button>
-</div>
+<div id="google_translate_element"></div>
 
 <div class="content-section">
-    <!-- Content to be translated -->
+    <!-- Content in the default language (English) -->
     <h1>Mumbai</h1>
     <p>The capital city of Maharashtra, formerly known as Bombay, is derived from the Marathi words "Mumbā" and "Āai," meaning "mother" and "goddess," respectively. The name refers to the local Hindu goddess Mumbadevi.</p>
 
@@ -26,18 +21,13 @@
 </div>
 
 <script>
-    // Initialize the Google Translate service
+    // Function to load the Google Website Translator
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
     }
-
-    // Translate the entire page content to Hindi
-    function translateToHindi() {
-        google.translate.TranslateElement.Translate('en', 'hi', function (translation) {
-            // Replace the entire content with the translated text
-            document.body.innerHTML = translation.value;
-        });
-    }
 </script>
+
+<!-- Include Google Website Translator script -->
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
